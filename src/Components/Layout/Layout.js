@@ -50,7 +50,7 @@ const Layout = ({ user, setUser}) => {
           </> 
             ) : ( 
             <>
-            <Link to="/login"><span className="nav-link">Вход</span></Link>
+            <Link to="/login"><span className="nav-link" >Вход</span></Link>
             <Link to="/register"><span className="nav-link">Регистрация</span></Link>
             <strong>Гость</strong>
             </>

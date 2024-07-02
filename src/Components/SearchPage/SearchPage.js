@@ -214,7 +214,7 @@ const SearchPage = ({ user }) => {
                             ))}
                         </Select>
                     </div>
-                    <div style={{ marginBottom: '15px', paddingLeft: "10px" }}>
+                    <div style={{ marginBottom: '15px', paddingLeft: "10px", paddingRight: "10px" }}>
                         <label htmlFor="price-filter">Цена:</label>
                         <Slider
                             range
@@ -240,8 +240,8 @@ const SearchPage = ({ user }) => {
                             <Option value="По возрастанию">По возрастанию</Option>
                         </Select>
                     </div>
-                    <Button onClick={() => applyFilters()} type="primary" style={{ marginBottom: '15px', width: '45%', marginLeft: '10px' }}>Применить</Button>
-                    <Button onClick={() => resetFilters()} type="primary" style={{ marginBottom: '15px', width: '45%', marginLeft: '10px' }}>Сбросить</Button>
+                    <Button onClick={() => applyFilters()} type="primary" style={{ marginBottom: '15px', width: '45%', marginLeft: '7px', fontSize: 12 }}>Применить</Button>
+                    <Button onClick={() => resetFilters()} type="primary" style={{ marginBottom: '15px', width: '45%', marginLeft: '7px', fontSize: 12  }}>Сбросить</Button>
                 </Sider>
                 {/* основное содержимое страницы с товарами*/ } 
                 <Content style={{ padding: "0 150px", minHeight: "100vh" }}>
