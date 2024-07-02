@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from "react-router-dom";
 import { Card, Col, Row, Input, Select, Button, Layout, theme, Slider, Pagination } from 'antd';
 
-const SearchPage = ({ user }) => {
+const Dress = ({ user }) => {
     const [products, setProducts] = useState([]);
     const [categories, setCategories] = useState([]);
     const [firms, setFirms] = useState([]);
-    const [q, setQ] = useState(""); // поисквая строка
+    const [q, setQ] = useState(""); // поисковая строка
     const location = useLocation(); // переменная, которая считывает url-адрес страницы
     const queryParams = new URLSearchParams(location.search); // считываем все параметры из url строки 
     const categoryParam = queryParams.get("category"); // считываем параметр с категорией 
@@ -14,7 +14,6 @@ const SearchPage = ({ user }) => {
     const [selectedFirm, setSelectedFirm] = useState("Bce");
     const [priceRange, setPriceRange] = useState([0, 5000]);
     const [sortType, setSortType] = useState("");
-    const [searchParam] = useState("name"); // параметр продукта, по которому будет проводиться поиск
     const [currentPage, setCurrentPage] = useState(1); // текущая страница пагинации
     const [itemsPerPage] = useState(8); // количество товаров на одной странице
     const [filteredProducts, setFilteredProducts] = useState([]);
@@ -81,8 +80,6 @@ const SearchPage = ({ user }) => {
     // функция для применений фильтров по нажатию на кнопку 
     const applyFilters = () => {
         setCurrentPage(1); 
-        const filteredItems = filterItems(products); // вызов функции фильтрации
-        setFilteredProducts(filteredItems); // заносим отфильтрованные товары для отрисовки
     };
 
 
@@ -96,36 +93,6 @@ const SearchPage = ({ user }) => {
     };
 
     // функция фильтрации
-    function filterItems(items) {
-        let filteredItems = items.filter((item) => { 
-            const categoryMatch = selectedCategory === "Bce" || item.categoryId === parseInt(selectedCategory); // проверка, чтобы у товара совпадала категория с выбранной категорией
-            const firmMatch = selectedFirm === "Bce" || item.firmId === parseInt(selectedFirm); 
-            const priceMatch = parseFloat(item.price) >= priceRange[0] && parseFloat(item.price) <= priceRange[1]; // сравниваем цену товара с промежутком цены, который стоит в фильтрах
-
-            return (
-                categoryMatch &&
-                firmMatch &&
-                priceMatch &&
-                item[searchParam] // смотрим товар по параметру поиска
-                    .toString() // преобразуем в строку
-                    .toLowerCase() // преобразуем строку в нижний регистр, чтобы сделать поиск регистронезависимым
-                    .includes(q.toLowerCase()) // смотрим, содержится ли значение из поисковой строки
-            );
-        });
-        
-        // проверка, стоит ли какой-то из этих типов сортировок
-        if (sortType === "A-я") {
-            filteredItems.sort((a, b) => (a.name > b.name ? 1 : -1)); // если 1, то элемент перестраивается после
-        } else if (sortType === "Я-a") {
-            filteredItems.sort((a, b) => (a.name < b.name ? 1 : -1)); // если -1 то перед элементом
-        } else if (sortType === "По убыванию") {
-            filteredItems.sort((a, b) => (a.price < b.price ? 1 : -1));
-        } else if (sortType === "По возрастанию") {
-            filteredItems.sort((a, b) => (a.price > b.price ? 1 : -1));
-        }
-    
-        return filteredItems; 
-    }
 
     // Смена страницы в пагинации
     const handleChangePage = (page) => {
@@ -133,13 +100,6 @@ const SearchPage = ({ user }) => {
     };
 
     // при подгрузке товаров сразу используем фильтр
-    useEffect(() => {
-        if(products.length > 0) {
-            const filteredItems = filterItems(products);
-            setFilteredProducts(filteredItems);
-        }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [products]);
 
     const indexOfLastItem = currentPage * itemsPerPage; // считаем индекс последнего элемента
     const indexOfFirstItem = indexOfLastItem - itemsPerPage; // считаем индекс первого
@@ -220,7 +180,7 @@ const SearchPage = ({ user }) => {
                             range
                             step={50}
                             defaultValue={priceRange}
-                            onChangeComplete={(value) => setPriceRange(value)}
+                            onAfterChange={(value) => setPriceRange(value)} // Update on slide change complete
                             min={0}
                             max={5000}
                         />
@@ -245,25 +205,53 @@ const SearchPage = ({ user }) => {
                 </Sider>
                 {/* основное содержимое страницы с товарами*/ } 
                 <Content style={{ padding: "0 150px", minHeight: "100vh" }}>
-                {currentItems.length < 1 && (<span style={{paddingLeft: "45%", fontSize: 24}}>Товары не найдены</span>)}
-                    {currentItems.length > 0 && (
-                        <>
+
                             <div>
                                 <br />
-                                <Row style={{paddingLeft: "26px"}} gutter={10}>
-                                    {currentItems.map(({ id, name, price, imageLink, count }) => (
-                                        <div className="products" key={id}>
-                                            <Col key={id}>
-                                                <Link to={`/productpage?id=${id}`}>
-                                                    <Card hoverable style={{ width: 240, marginRight: "16px" }} cover={<img style={{ width: "100%", height: "300px", objectFit: 'contain'}} alt="example" src={imageLink} />}>
-                                                        <Meta title={<span style={{ overflow: 'unset', whiteSpace: 'normal', textOverflow: 'unset' }}>{name}</span>} description={<span style={{ color: 'black', fontSize: '16px' }}>{price} ₽</span> } />
-                                                        {count < 1 && <p style={{ color: 'red' }}>Товар закончился</p>}
-                                                    </Card>
-                                                </Link>
-                                            </Col>
-                                        </div>
-                                    ))}
-                                    
+                                <Row style={{ paddingLeft: "26px" }} gutter={5}>
+                                    <Col>
+                                        <Link to={`/dress1`}>
+                                            <Card hoverable style={{ width: 240, marginRight: "16px", marginBottom:"15px" }} cover={<img style={{ width: "100%", height: "350px", objectFit: 'contain' }} alt="example" src="https://a.lmcdn.ru/product/M/P/MP002XW0Q3M8_22985397_1_v1_2x.jpg" />}>
+                                                <Meta title={<span style={{ overflow: 'unset', whiteSpace: 'normal', textOverflow: 'unset' }}>Amie Платье </span>} description={<span style={{ color: 'black', fontSize: '16px' }}>4000 ₽</span>} />
+                                            </Card>
+                                        </Link>
+                                    </Col>
+                                    <Col>
+                                        <Link to={`/productpage`}>
+                                            <Card hoverable style={{ width: 240, marginRight: "16px", marginBottom:"15px" }} cover={<img style={{ width: "100%", height: "350px", objectFit: 'contain' }} alt="example" src="https://a.lmcdn.ru/product/M/P/MP002XW00ESG_23678000_1_v1.jpeg" />}>
+                                                <Meta title={<span style={{ overflow: 'unset', whiteSpace: 'normal', textOverflow: 'unset' }}>Nataly Платье </span>} description={<span style={{ color: 'black', fontSize: '16px' }}>55000 ₽</span>} />
+                                            </Card>
+                                        </Link>
+                                    </Col>
+                                    <Col>
+                                        <Link to={`/productpage`}>
+                                            <Card hoverable style={{ width: 240, marginRight: "16px", marginBottom:"15px" }} cover={<img style={{ width: "100%", height: "350px", objectFit: 'contain' }} alt="example" src="https://a.lmcdn.ru/product/M/P/MP002XW0FOSJ_23281823_1_v1_2x.jpg" />}>
+                                                <Meta title={<span style={{ overflow: 'unset', whiteSpace: 'normal', textOverflow: 'unset' }}>Funday Платье </span>} description={<span style={{ color: 'black', fontSize: '16px' }}>34500 ₽</span>} />
+                                            </Card>
+                                        </Link>
+                                    </Col>
+                                    <Col>
+                                        <Link to={`/productpage`}>
+                                            <Card hoverable style={{ width: 240, marginRight: "16px", marginBottom:"15px" }} cover={<img style={{ width: "100%", height: "350px", objectFit: 'contain' }} alt="example" src="https://a.lmcdn.ru/product/M/P/MP002XW0L2DF_18107719_1_v1.jpeg" />}>
+                                                <Meta title={<span style={{ overflow: 'unset', whiteSpace: 'normal', textOverflow: 'unset' }}>Eva Платье </span>} description={<span style={{ color: 'black', fontSize: '16px' }}>4300 ₽</span>} />
+                                            </Card>
+                                        </Link>
+                                    </Col>
+                                    <Col>
+                                        <Link to={`/productpage`}>
+                                            <Card hoverable style={{ width: 240, marginRight: "16px", marginBottom:"15px" }} cover={<img style={{ width: "100%", height: "350px", objectFit: 'contain' }} alt="example" src="https://a.lmcdn.ru/product/M/P/MP002XW0D8V9_23959392_1_v2_2x.jpg" />}>
+                                                <Meta title={<span style={{ overflow: 'unset', whiteSpace: 'normal', textOverflow: 'unset' }}>Zolla Платье </span>} description={<span style={{ color: 'black', fontSize: '16px' }}>3000 ₽</span>} />
+                                            </Card>
+                                        </Link>
+                                    </Col>
+                                    <Col>
+                                        <Link to={`/productpage`}>
+                                            <Card hoverable style={{ width: 240, marginRight: "16px", marginBottom:"15px" }} cover={<img style={{ width: "100%", height: "350px", objectFit: 'contain' }} alt="example" src="https://a.lmcdn.ru/img135x194/M/P/MP002XW0EJB4_23458192_1_v1_2x.jpg" />}>
+                                                <Meta title={<span style={{ overflow: 'unset', whiteSpace: 'normal', textOverflow: 'unset' }}>Sunday Сарафан </span>} description={<span style={{ color: 'black', fontSize: '16px' }}>2000 ₽</span>} />
+                                            </Card>
+                                        </Link>
+                                    </Col>
+
                                 </Row>
                                 
                                 <Pagination
@@ -275,12 +263,11 @@ const SearchPage = ({ user }) => {
                                     onChange={handleChangePage}
                                 />
                             </div>
-                        </>
-                    )}
+                    
                 </Content>
             </Layout>
         </>
     );
 };
 
-export default SearchPage;
+export default Dress;

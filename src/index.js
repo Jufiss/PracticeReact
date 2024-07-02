@@ -10,6 +10,7 @@ import Category from './Components/Category/Category'
 import Firm from './Components/Firm/Firm'
 import Products from './Components/Products/Products'
 import SearchPage from './Components/SearchPage/SearchPage';
+import Dress from './Components/Dresses/Dress';
 import Layout from "./Components/Layout/Layout"
 import LogIn from "./Components/LogIn/LogIn"
 import Register from './Components/Register/Register'
@@ -98,7 +99,7 @@ const App = () => {
                 </div>
                 <div className="categories">
                   <Col>
-                    <Link to={`/searchpage`}>
+                    <Link to={`/dress`}>
                       <Card hoverable style={{ width: 240, marginBottom: 16 }} cover={<img alt="example" src="https://avatars.mds.yandex.net/get-mpic/12626365/2a0000018f9a7262b114ff63ca1b2b3004f0/600x800" style={{ width: "100%", height: "250px", objectFit: 'cover' }} />}>
                         <Meta title="Платья" />
                       </Card>
@@ -219,6 +220,8 @@ const App = () => {
           />
           <Route path="/productpage" element={<ProductPage user={user} />} />
           <Route path="/searchpage" element={<SearchPage user={user} />} />
+          <Route path="/dress" element={<Dress user={user} />} />
+
           <Route path="/cart" element={<CartInfo user={user} />} />
           {/* обработка несуществующей страницы */}
           <Route path="*" element={<h3>404</h3>} />
