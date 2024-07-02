@@ -245,26 +245,63 @@ const SearchPage = ({ user }) => {
                 </Sider>
                 {/* основное содержимое страницы с товарами*/ } 
                 <Content style={{ padding: "0 150px", minHeight: "100vh" }}>
-                {currentItems.length < 1 && (<span style={{paddingLeft: "45%", fontSize: 24}}>Товары не найдены</span>)}
-                    {currentItems.length > 0 && (
-                        <>
                             <div>
                                 <br />
-                                <Row style={{paddingLeft: "26px"}} gutter={10}>
-                                    {currentItems.map(({ id, name, price, imageLink, count }) => (
-                                        <div className="products" key={id}>
-                                            <Col key={id}>
-                                                <Link to={`/productpage?id=${id}`}>
-                                                    <Card hoverable style={{ width: 240, marginRight: "16px" }} cover={<img style={{ width: "100%", height: "300px", objectFit: 'contain'}} alt="example" src={imageLink} />}>
-                                                        <Meta title={<span style={{ overflow: 'unset', whiteSpace: 'normal', textOverflow: 'unset' }}>{name}</span>} description={<span style={{ color: 'black', fontSize: '16px' }}>{price} ₽</span> } />
-                                                        {count < 1 && <p style={{ color: 'red' }}>Товар закончился</p>}
-                                                    </Card>
-                                                </Link>
-                                            </Col>
-                                        </div>
-                                    ))}
-                                    
+                                <Row style={{paddingLeft: "26px"}} gutter={5}>
+
+                                    <Col>
+                                        <Link to={`/dress1`}>
+                                            <Card hoverable style={{ width: 240, marginRight: "16px", marginBottom:"15px" }} cover={<img style={{ width: "100%", height: "350px", objectFit: 'contain' }} alt="example" src="https://a.lmcdn.ru/product/M/P/MP002XW0Q3M8_22985397_1_v1_2x.jpg" />}>
+                                                <Meta title={<span style={{ overflow: 'unset', whiteSpace: 'normal', textOverflow: 'unset' }}>Amie Платье </span>} description={<span style={{ color: 'black', fontSize: '16px' }}>4000 ₽</span>} />
+                                            </Card>
+                                        </Link>
+                                    </Col>
+                                    <Col>
+                                        <Link to={`/productpage`}>
+                                            <Card hoverable style={{ width: 240, marginRight: "16px", marginBottom:"15px" }} cover={<img style={{ width: "100%", height: "350px",  }} alt="example" src="https://images.2moodstore.com/upload/iblock/9b9/30e9ccoad05cl2h6r1p8wmz82wa13mg7.jpg?img_type=pmain" />}>
+                                                <Meta title={<span style={{ overflow: 'unset', whiteSpace: 'normal', textOverflow: 'unset' }}>Юбка миди из твида</span>} description={<span style={{ color: 'black', fontSize: '16px' }}>10000 ₽</span>} />
+                                            </Card>
+                                        </Link>
+                                    </Col>
+                                    <Col>
+                                        <Link to={`/productpage`}>
+                                            <Card hoverable style={{ width: 240, marginRight: "16px", marginBottom:"15px" }} cover={<img style={{ width: "100%", height: "350px", }} alt="example" src="https://images.2moodstore.com/upload/iblock/b0b/d0ha2xuq7nz4cky1qq9y7hwun6yp68oo.jpg?img_type=pmain" />}>
+                                                <Meta title={<span style={{ overflow: 'unset', whiteSpace: 'normal', textOverflow: 'unset' }}>Мюли </span>} description={<span style={{ color: 'black', fontSize: '16px' }}>5000 ₽</span>} />
+                                            </Card>
+                                        </Link>
+                                    </Col>
+                                    <Col>
+                                        <Link to={`/productpage`}>
+                                            <Card hoverable style={{ width: 240, marginRight: "16px", marginBottom:"15px" }} cover={<img style={{ width: "100%", height: "350px", objectFit: 'contain' }} alt="example" src="https://a.lmcdn.ru/product/M/P/MP002XW00ESG_23678000_1_v1.jpeg" />}>
+                                                <Meta title={<span style={{ overflow: 'unset', whiteSpace: 'normal', textOverflow: 'unset' }}>Nataly Платье </span>} description={<span style={{ color: 'black', fontSize: '16px' }}>5500 ₽</span>} />
+                                            </Card>
+                                        </Link>
+                                    </Col>
+                                    <Col>
+                                        <Link to={`/productpage`}>
+                                            <Card hoverable style={{ width: 240, marginRight: "16px", marginBottom:"15px" }} cover={<img style={{ width: "100%", height: "350px", objectFit: 'contain' }} alt="example" src="https://a.lmcdn.ru/product/M/P/MP002XW0FOSJ_23281823_1_v1_2x.jpg" />}>
+                                                <Meta title={<span style={{ overflow: 'unset', whiteSpace: 'normal', textOverflow: 'unset' }}>Funday Платье </span>} description={<span style={{ color: 'black', fontSize: '16px' }}>34500 ₽</span>} />
+                                            </Card>
+                                        </Link>
+                                    </Col>
+                                    <Col>
+                                        <Link to={`/productpage`}>
+                                            <Card hoverable style={{ width: 240, marginRight: "16px", marginBottom:"15px" }} cover={<img style={{ width: "100%", height: "350px", objectFit: 'contain' }} alt="example" src="https://a.lmcdn.ru/product/M/P/MP002XW0L2DF_18107719_1_v1.jpeg" />}>
+                                                <Meta title={<span style={{ overflow: 'unset', whiteSpace: 'normal', textOverflow: 'unset' }}>Eva Платье </span>} description={<span style={{ color: 'black', fontSize: '16px' }}>4300 ₽</span>} />
+                                            </Card>
+                                        </Link>
+                                    </Col>
+                                    <Col>
+                                        <Link to={`/productpage`}>
+                                            <Card hoverable style={{ width: 240, marginRight: "16px", marginBottom:"15px" }} cover={<img style={{ width: "100%", height: "350px", objectFit: 'contain' }} alt="example" src="https://a.lmcdn.ru/product/M/P/MP002XW0D8V9_23959392_1_v2_2x.jpg" />}>
+                                                <Meta title={<span style={{ overflow: 'unset', whiteSpace: 'normal', textOverflow: 'unset' }}>Zolla Платье </span>} description={<span style={{ color: 'black', fontSize: '16px' }}>3000 ₽</span>} />
+                                            </Card>
+                                        </Link>
+                                    </Col>
+
+
                                 </Row>
+
                                 
                                 <Pagination
                                     style={{ marginTop: '20px', textAlign: 'center' }} // Центрируем пагинацию
@@ -275,8 +312,6 @@ const SearchPage = ({ user }) => {
                                     onChange={handleChangePage}
                                 />
                             </div>
-                        </>
-                    )}
                 </Content>
             </Layout>
         </>
