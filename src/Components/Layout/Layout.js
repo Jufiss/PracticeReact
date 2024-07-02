@@ -21,14 +21,17 @@ const Layout = ({ user, setUser}) => {
       { label: <Link to={"/orders"}>Заказы</Link>, key: "5" },
       { label: <Link to={`/cart?userName=${user.userName}`}>Корзина</Link>, key: "6" },
     ];
-  } else {
+  } else if (user.userRole === "user"){
     return [
       { label: <Link to={"/"}>Главная</Link>, key: "1" },
       { label: <Link to={`/cart?userName=${user.userName}`}>Корзина</Link>, key: "2" },
     ];
+  } else if (user.userRole === ""){
+    return [
+      { label: <Link to={"/"}>Главная</Link>, key: "1" }
+    ];
   }
 };
-
 
   const toggleModalClose = () => {
     setIsOpenClose(true);
