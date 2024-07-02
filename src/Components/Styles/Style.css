@@ -1,0 +1,88 @@
+body
+{
+    font-family:Arial, Helvetica, sans-serif;
+    margin: 0;
+}
+
+a{
+    text-decoration: none;
+}
+
+.categories{
+    margin-bottom: 12px;
+}
+
+.products span
+{
+    font-size: 14px;   
+}
+
+input{
+    margin-bottom: 16px;
+}
+
+/* Button */
+
+.btn {
+    border-radius: 6px;
+    border-width: 0;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    height: 26px;
+    margin: 12px 12px 0 0; 
+    outline: none;
+    overflow: hidden;
+    padding: 0 25px;
+    text-align: center;
+}
+
+.btn:hover {
+    box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+}
+
+.btn-del {
+    background-color: #ee1616;
+}
+
+.btn-del:hover {
+    background-color: #ee6969;
+}
+
+.btn-add{
+    background-color: #405cf5;
+}
+
+.btn-add:hover{
+    background-color: #697dee;
+}
+
+.btn-close {
+    background-color: #ee1616;
+    margin: 0;
+    padding: 0 12px;
+}
+
+.btn-close:hover {
+    background-color: #ee6969;
+}
+
+.firms{
+    margin-bottom: 16px;
+}
+  
+  /* Table */
+
+  table {
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th, td {
+    border: 1px solid #dddddd;
+    padding: 8px;
+}
+
+th {
+    background-color: #f2f2f2;
+}

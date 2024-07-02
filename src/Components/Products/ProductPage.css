@@ -1,0 +1,26 @@
+.product-block-info {
+    display: flex;
+    align-items: center;
+  }
+  
+  .product-description {
+    margin-left: 20px;
+  }
+  
+  .product-tag {
+    margin-bottom: 8px;
+    font-size: 16px;
+  }
+  
+  .product-tag span {
+    font-weight: bold;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .product-block-info {
+      flex-wrap: wrap; 
+    }
+    .product-image img {
+      max-width: 100%;
+    }
+  }
