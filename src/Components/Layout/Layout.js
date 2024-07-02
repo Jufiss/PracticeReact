@@ -58,7 +58,7 @@ const Layout = ({ user, setUser}) => {
             <Content className="site-layout" style={{ padding: "0 50px", backgroundColor: "white", }}>
               <Outlet /> 
             </Content>
-            {<Footer style={{ textAlign: "center" }}>Ksenia's Cosmetic Shop ©2024</Footer>}
+            {<Footer style={{ textAlign: "center" }}>Clothing Shop ©2024</Footer>}
     </LayoutAntd>
   )
 }
