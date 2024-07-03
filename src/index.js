@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import ReactDOM from "react-dom/client"
 import { BrowserRouter, Route, Routes, Link } from "react-router-dom"
 import { Card, Col, Row } from 'antd';
-
+import "./index.css";
 
 import './Components/Styles/Style.css'
 
@@ -12,6 +12,7 @@ import Products from './Components/Products/Products'
 import SearchPage from './Components/SearchPage/SearchPage';
 import Dress from './Components/Dresses/Dress';
 import Dress1 from './Components/Dresses/Dress1';
+
 import Layout from "./Components/Layout/Layout"
 import LogIn from "./Components/LogIn/LogIn"
 import Register from './Components/Register/Register'

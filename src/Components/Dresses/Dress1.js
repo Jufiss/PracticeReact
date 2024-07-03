@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { Card, Image, Button, Select, Space } from 'antd';
+import React, { createElement, useState } from 'react';
+import { DislikeFilled, DislikeOutlined, LikeFilled, LikeOutlined } from '@ant-design/icons';
+import { Card, Image, Button, Select, Tooltip } from 'antd';
 import { useLocation } from 'react-router-dom';
-
+import Comments from './Comments';
 import './Dress.css'
 
 const Dress1 = ({ user }) => {
@@ -16,7 +17,34 @@ const Dress1 = ({ user }) => {
 
 
     };
-
+    const [likes, setLikes] = useState(0);
+    const [dislikes, setDislikes] = useState(0);
+    const [action, setAction] = useState(null);
+    const like = () => {
+      setLikes(1);
+      setDislikes(0);
+      setAction('liked');
+    };
+    const dislike = () => {
+      setLikes(0);
+      setDislikes(1);
+      setAction('disliked');
+    };
+    const actions = [
+      <Tooltip key="comment-basic-like" title="Like">
+        <span onClick={like}>
+          {createElement(action === 'liked' ? LikeFilled : LikeOutlined)}
+          <span className="comment-action">{likes}</span>
+        </span>
+      </Tooltip>,
+      <Tooltip key="comment-basic-dislike" title="Dislike">
+        <span onClick={dislike}>
+          {React.createElement(action === 'disliked' ? DislikeFilled : DislikeOutlined)}
+          <span className="comment-action">{dislikes}</span>
+        </span>
+      </Tooltip>,
+      <span key="comment-basic-reply-to">Reply to</span>,
+    ];
 
     return (
         <>
@@ -63,11 +91,15 @@ const Dress1 = ({ user }) => {
                             ]}
                         />
                         <p className="product-tag">Размер на модели: S INT. Параметры модели: рост 172 см, грудь 83 см, талия 62 см, бедра 92 см.</p>
-                        <Button onClick={handleAddToCart} disabled={"Добавить в корзину"}></Button>
+                        <Button  type="primary" style={{ width: '200px'  }}>Добавить в корзину</Button>
                     </div>
                 </div>
 
             </Card>
+            <Comments
+                commentsUrl="http://localhost:3004/comments"
+                currentUserId="1"
+            />
         </>
     );
 };
