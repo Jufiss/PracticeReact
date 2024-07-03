@@ -5,6 +5,7 @@ import { useLocation } from 'react-router-dom';
 import Comments from './Comments';
 import './Dress.css'
 
+
 const Dress1 = ({ user }) => {
     const [product,] = useState(null);
 
