@@ -109,6 +109,7 @@ th {
   font-size: large;
   font-weight: 600;
   margin-top: 20px;
+  padding-bottom: 30px;
   text-transform: uppercase;
 }
 
@@ -118,4 +119,43 @@ th {
 
 h3 {
   font-family: "Montserrat", sans-serif;
+}
+
+.Order {
+  font-family: "Montserrat", sans-serif;
+  border-radius: 20px;
+  background-color: white;
+  padding: 15px 35px 15px 35px;
+  border: black 2px solid;
+}
+
+.AcoountButton {
+  margin-top: 50px;
+  font-family: "Montserrat", sans-serif;
+  width: 100%;
+  text-align: left;
+  font-size: 16px;
+  font-weight: 450;
+  cursor: pointer;
+}
+
+.AcoountButton:hover {
+  color: #deb887;
+}
+
+.AccountInput {
+  font-family: "Montserrat", sans-serif;
+  border-width: 0px 0px 1.5px 0px;
+  padding: 10px 0px;
+  border-color: rgb(206, 206, 206);
+}
+
+.AccountInput:focus {
+  outline: none;
+  border-color: black;
+}
+
+.AccountLabel {
+  font-size: 18px;
+  margin-top: 10px;
 }

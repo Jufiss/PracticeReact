@@ -1,15 +1,5 @@
 import React, { useState } from "react"
 
-const Product = {
-  id: "", // Уникальный идентификатор товара
-  name: "", // Название товара
-  category: "", // Категория товара
-  price: 0, // Цена товара
-  image: "", // URL изображения товара
-  color: "",
-  description: "",
-}
-
 const initialCategories = [
   {
     id: 1,
@@ -106,7 +96,6 @@ const initialProducts = [
     description:
       "Размер на модели: S INT. Параметры модели: рост 172 см, грудь 83 см, талия 62 см, бедра 92 см.",
   },
-  // Добавьте сюда остальные товары
 ]
 
 const initialOrders = [
@@ -116,6 +105,7 @@ const initialOrders = [
     finishDate: "30.11.2024",
     address: "ул.Кооперативная,д.49,кв.41",
     payment: "Картой",
+    status: "завершен",
     products: [
       {
         id: "1",
@@ -127,8 +117,17 @@ const initialOrders = [
       },
     ],
   },
-  // Добавьте сюда остальные заказы
 ]
+
+export const user = {
+  id: 1,
+  name: "Василиса",
+  surname: "Васильева",
+  surname2: "Андреевна",
+  city: "Иваново",
+  email: "vasilisa@gmail.com",
+  phoneNumber: "+79390239920",
+}
 
 const StoreContext = React.createContext({
   products: [],
@@ -141,12 +140,30 @@ const StoreProvider = ({ children }) => {
   const [categories, setCategories] = useState(initialCategories)
   const [orders, setOrders] = useState(initialOrders)
 
+  const calculateOrderTotal = (order) => {
+    let total = 0
+    order.products.forEach((product) => {
+      const productData = products.find((p) => p.id === product.id)
+      if (productData) {
+        total += productData.price * product.quantity
+      }
+    })
+    return total
+  }
+
+  const getProductById = (id) => {
+    const product = products.find((p) => p.id === id)
+    return product
+  }
+
   return (
     <StoreContext.Provider
       value={{
         products,
         orders,
         categories,
+        calculateOrderTotal,
+        getProductById,
       }}
     >
       {children}

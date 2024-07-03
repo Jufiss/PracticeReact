@@ -1,58 +1,88 @@
 import { React, useContext } from "react"
-import { UserOutlined } from "@ant-design/icons"
-import { Avatar, Space } from "antd"
-import { Outlet, Link, useLocation } from "react-router-dom"
+import { Link, Outlet } from "react-router-dom"
+import { BsCaretRightFill } from "react-icons/bs"
 
 import "../Styles/Style.css"
 import { StoreProvider, StoreContext } from "../StoreContext/StoreContext.jsx"
+import OrdersList from "./OrdersList.jsx"
+import { ConfigProvider, Menu } from "antd"
+import { Content } from "antd/es/layout/layout.js"
+
+import { user } from "../StoreContext/StoreContext"
 
 const Account = () => {
-  function OrderList() {
-    const { orders } = useContext(StoreContext)
+  const { orders, calculateOrderTotal, getProductById } = useContext(StoreContext)
+  const items = [
+    {
+      key: "/",
+      label: (
+        <Link to="/account/edit" className="UserNameLink">
+          {user.name + " " + user.surname}
+        </Link>
+      ),
+    },
 
-    return (
-      <div>
-        {orders.map(({ id, address, products, orderDate, finishDate }) => (
-          <div className="Order" key={id} id={id}>
-            <div style={{ display: "flex", alignItems: "center" }}>
-              <h3>{address}</h3>
-            </div>
-          </div>
-        ))}
-      </div>
-    )
-  }
+    {
+      key: "/account/orders",
+      label: (
+        <Link to="/account/orders" className="AcoountButton">
+          мои заказы
+        </Link>
+      ),
+    },
+    {
+      key: "/account",
+      label: <Link className="AcoountButton">выход</Link>,
+    },
+  ]
 
   return (
-    <div style={{ display: "flex" }}>
-      <div
-        style={{
-          width: "35%",
-          flex: "1 1 auto",
-          alignItems: "center",
-          justifyContent: "center",
+    <StoreProvider>
+      <ConfigProvider
+        theme={{
+          components: {
+            Menu: {
+              itemSelectedBg: "transperent",
+              itemHoverBg: "transperent",
+              itemActiveBg: "transperent",
+              itemHoverColor: "#deb887",
+              itemSelectedColor: "#deb887",
+            },
+          },
         }}
       >
-        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", margin: 50 }}>
-          <img
-            src="https://koshka.top/uploads/posts/2021-12/1638584723_6-koshka-top-p-melkii-kotenok-7.jpg"
+        <div style={{ display: "flex" }}>
+          <div
             style={{
-              maxWidth: 350,
-              borderRadius: "50%",
-              objectFit: "cover",
-              aspectRatio: 1,
+              width: "35%",
+              flex: "1 1 auto",
+              alignItems: "center",
+              justifyContent: "center",
             }}
-          />
-          <Link className="UserNameLink">Имя пользователя</Link>
+          >
+            <div
+              style={{ display: "flex", flexDirection: "column", alignItems: "center", margin: 50 }}
+            >
+              <img
+                src="https://koshka.top/uploads/posts/2021-12/1638584723_6-koshka-top-p-melkii-kotenok-7.jpg"
+                style={{
+                  maxWidth: 350,
+                  borderRadius: "50%",
+                  objectFit: "cover",
+                  aspectRatio: 1,
+                }}
+              />
+              <div style={{ display: "flex", flexDirection: "column" }}>
+                <Menu defaultSelectedKey={["/account/orders"]} items={items} />
+              </div>
+            </div>
+          </div>
+          <div style={{ flex: "1 1 auto", width: "65%" }}>
+            <Outlet />
+          </div>
         </div>
-      </div>
-      <div style={{ flex: "1 1 auto", width: "65%" }}>
-        <h3 style={{ fontSize: "xx-large", fontWeight: 550, margin: 50, marginTop: 50 }}>ЗАКАЗЫ</h3>
-        <StoreProvider>
-          <OrderList />
-        </StoreProvider>
-      </div>
-    </div>
+      </ConfigProvider>
+    </StoreProvider>
   )
 }
 export default Account

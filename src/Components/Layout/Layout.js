@@ -41,9 +41,9 @@ const Layout = ({ user, setUser }) => {
       label: <Link to="/cart"></Link>,
     },
     {
-      key: "/account",
+      key: "/account/orders",
       icon: <HiOutlineUserCircle />,
-      label: <Link to="/account"></Link>,
+      label: <Link to="/account/orders"></Link>,
     },
   ]
 

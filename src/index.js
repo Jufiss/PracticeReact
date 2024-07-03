@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from "react"
 import ReactDOM from "react-dom/client"
 import { BrowserRouter, Route, Routes, Link } from "react-router-dom"
-import { Card, Col, Row } from 'antd';
-import "./index.css";
+import { Card, Col, Row } from "antd"
+import "./index.css"
 
 import "./Components/Styles/Style.css"
 
-import Category from './Components/Category/Category'
-import Firm from './Components/Firm/Firm'
-import Products from './Components/Products/Products'
-import SearchPage from './Components/SearchPage/SearchPage';
-import Dress from './Components/Dresses/Dress';
-import Dress1 from './Components/Dresses/Dress1';
+import Category from "./Components/Category/Category"
+import Firm from "./Components/Firm/Firm"
+import Products from "./Components/Products/Products"
+import SearchPage from "./Components/SearchPage/SearchPage"
+import Dress from "./Components/Dresses/Dress"
+import Dress1 from "./Components/Dresses/Dress1"
 import Layout from "./Components/Layout/Layout"
 import LogIn from "./Components/LogIn/LogIn"
 import Register from "./Components/Register/Register"
@@ -19,6 +19,9 @@ import Orders from "./Components/Orders/Orders"
 import ProductPage from "./Components/Products/ProductPage"
 import CartInfo from "./Components/Cart/Cart"
 import Account from "./Components/Account/Account"
+import OrderList from "./Components/Account/OrdersList"
+import { StoreProvider } from "./Components/StoreContext/StoreContext"
+import EditAccount from "./Components/Account/EditAccount"
 
 const { Meta } = Card
 
@@ -302,7 +305,10 @@ const App = () => {
           <Route path="/dress" element={<Dress user={user} />} />
           <Route path="/dress1" element={<Dress1 user={user} />} />
 
-          <Route path="/account" element={<Account />} />
+          <Route path="/account" element={<Account />}>
+            <Route path="/account/edit" element={<EditAccount />} />
+            <Route path="/account/orders" element={<OrderList />} />
+          </Route>
 
           <Route path="/cart" element={<CartInfo user={user} />} />
           {/* обработка несуществующей страницы */}
