@@ -32,7 +32,7 @@ const EditAccount = () => {
         value={user.email}
         placeholder="Электронная почта"
       />
-      <Button type="primary">Сохранить</Button>
+      <Button style={{ width: "200px", marginTop: 10 }}>Сохранить</Button>
     </div>
   )
 }
