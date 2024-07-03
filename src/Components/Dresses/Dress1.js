@@ -7,17 +7,14 @@ import './Dress.css'
 
 
 const Dress1 = ({ user }) => {
-    const [product,] = useState(null);
+    const [product] = useState(null);
 
 
     const handleChange = (value) => {
         console.log(`selected ${value}`);
     };
 
-    const handleAddToCart = async () => {
 
-
-    };
     const [likes, setLikes] = useState(0);
     const [dislikes, setDislikes] = useState(0);
     const [action, setAction] = useState(null);
@@ -92,13 +89,13 @@ const Dress1 = ({ user }) => {
                             ]}
                         />
                         <p className="product-tag">Размер на модели: S INT. Параметры модели: рост 172 см, грудь 83 см, талия 62 см, бедра 92 см.</p>
-                        <Button  type="primary" style={{ width: '200px'  }}>Добавить в корзину</Button>
+                        <Button  style={{ width: '200px'  }}>Добавить в корзину</Button>
                     </div>
                 </div>
 
             </Card>
             <Comments
-                commentsUrl="http://localhost:3004/comments"
+                commentsUrl="http://localhost:3000/comments"
                 currentUserId="1"
             />
         </>

@@ -20,20 +20,22 @@
     height: 80px;
     margin-bottom: 8px;
     margin-top: 8px;
-    border: 1px solid rgb(107, 114, 12);
+    border: 1px solid rgb(137, 137, 137);
   }
   
   .comment-form-button {
-    font-size: 16px;
+    font-size: 14px;
     padding: 8px 16px;
-    background: rgb(59, 130, 246);
-    border-radius: 8px;
-    color: white;
+    background-color: white;
+    border-radius: 7px;
+    color: rgb(0, 0, 0);
+    border: 1px solid rgb(181, 181, 182);
   }
   
   .comment-form-button:hover:enabled {
     cursor: pointer;
-    background: rgb(37, 99, 235);
+    color: rgb(64, 178, 255);
+    border: 1px solid rgb(64, 150, 255);
   }
   
   .comment-form-button:disabled {
@@ -71,7 +73,7 @@
   .comment-author {
     margin-right: 8px;
     font-size: 20px;
-    color: rgb(59, 130, 246);
+    color: rgb(167, 92, 117);
   }
   
   .comment-text {
