@@ -240,8 +240,8 @@ const SearchPage = ({ user }) => {
                             <Option value="По возрастанию">По возрастанию</Option>
                         </Select>
                     </div>
-                    <Button onClick={() => applyFilters()} type="primary" style={{ marginBottom: '15px', width: '45%', marginLeft: '7px', fontSize: 12 }}>Применить</Button>
-                    <Button onClick={() => resetFilters()} type="primary" style={{ marginBottom: '15px', width: '45%', marginLeft: '7px', fontSize: 12  }}>Сбросить</Button>
+                    <Button onClick={() => applyFilters()}  style={{ marginBottom: '15px', color:"#595a68", width: '45%', marginLeft: '7px', fontSize: 12 }}>Применить</Button>
+                    <Button onClick={() => resetFilters()}  style={{ marginBottom: '15px', width: '45%', marginLeft: '7px', fontSize: 12  }}>Сбросить</Button>
                 </Sider>
                 {/* основное содержимое страницы с товарами*/ } 
                 <Content style={{ padding: "0 150px", minHeight: "100vh" }}>
