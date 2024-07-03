@@ -52,14 +52,16 @@
   
   .comment-image-container {
     margin-right: 12px;
+    
   }
   
   .comment-image-container img {
     border-radius: 50px;
+    width: 100%;
   }
   
   .comment-right-part {
-    width: 100%;
+    width: 2000%;
   }
   
   .comment-content {
