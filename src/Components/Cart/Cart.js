@@ -147,8 +147,8 @@ function Cart({ user }) {
                   description={
                     <>
                       <div>
-                        <div>Цвет {itemProduct.color}</div>
-                        <div> Размер {itemProduct.size}</div>
+                        <div>Цвет: {itemProduct.color}</div>
+                        <div> Размер: {itemProduct.size}</div>
                         <div style={{ color: 'black', fontSize: 20, paddingTop: 32 }}>{itemProduct.price} ₽ <br /></div>
                       </div>
                     </>

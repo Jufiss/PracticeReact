@@ -21,8 +21,8 @@ const Layout = ({ user, setUser }) => {
           Каталог
         </Link>
       ),
+      position: "left"
     },
-
     {
       key: "/cart",
       icon: (
@@ -39,24 +39,26 @@ const Layout = ({ user, setUser }) => {
         </Badge>
       ),
       label: <Link to="/cart"></Link>,
+      position: "right"
     },
     {
       key: "/account/orders",
       icon: <HiOutlineUserCircle />,
       label: <Link to="/account/orders"></Link>,
+      position: "right"
     },
   ]
 
   const MenuComponent = ({ items }) => {
     const leftItems = items.filter((item) => item.position === "left")
-    const rightItems = items.filter((item) => !item.position || item.position !== "left")
+    const rightItems = items.filter((item) => item.position === "right")
 
     return (
       <Menu theme="dark" mode="horizontal" className="menu">
         {leftItems.map((item) => (
           <Menu.Item key={item.key}>{item.label}</Menu.Item>
         ))}
-        <Menu.Item key="spacer" style={{ flexGrow: 1 }} /> {/* пространство для разделения */}
+        <Menu.Item key="spacer" style={{ flexGrow: 0.999 }} /> {/* пространство для разделения */}
         {rightItems.map((item) => (
           <Menu.Item key={item.key} icon={item.icon}>
             {item.label}
@@ -66,7 +68,6 @@ const Layout = ({ user, setUser }) => {
     )
   }
 
-  // Получаем в шапку элементы, которые будет видеть пользователь, в зависимости от своей роли
   const getMenuItems = () => {
     if (user.userRole === "admin") {
       return [
@@ -111,7 +112,7 @@ const Layout = ({ user, setUser }) => {
     >
       <LayoutAntd style={{ minHeight: "100vh" }}>
         <Header style={{ position: "sticky", top: 0, zIndex: 1, width: "100%" }}>
-          <Menu theme="dark" items={items} mode="horizontal" className="menu"></Menu>
+          <MenuComponent items={items} />
         </Header>
         <Content className="site-layout" style={{ padding: "0 50px", backgroundColor: "white" }}>
           <Outlet />
@@ -123,3 +124,4 @@ const Layout = ({ user, setUser }) => {
 }
 
 export default Layout
+
