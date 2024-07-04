@@ -1,12 +1,9 @@
 import { React, useContext } from "react"
 import { Link, Outlet } from "react-router-dom"
-import { BsCaretRightFill } from "react-icons/bs"
 
 import "../Styles/Style.css"
 import { StoreProvider, StoreContext } from "../StoreContext/StoreContext.jsx"
-import OrdersList from "./OrdersList.jsx"
 import { ConfigProvider, Menu } from "antd"
-import { Content } from "antd/es/layout/layout.js"
 
 import { user } from "../StoreContext/StoreContext"
 
