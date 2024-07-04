@@ -54,7 +54,7 @@ const Layout = ({ user, setUser }) => {
     const rightItems = items.filter((item) => item.position === "right")
 
     return (
-      <Menu theme="dark" mode="horizontal" className="menu">
+      <Menu theme="#898888" mode="horizontal" className="menu">
         {leftItems.map((item) => (
           <Menu.Item key={item.key}>{item.label}</Menu.Item>
         ))}
