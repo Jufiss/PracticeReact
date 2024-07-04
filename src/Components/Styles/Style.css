@@ -99,7 +99,7 @@ th {
 }
 
 .TopLink:hover {
-  color: white;
+  color: #deb887;
 }
 
 .UserNameLink {
@@ -158,4 +158,32 @@ h3 {
 .AccountLabel {
   font-size: 18px;
   margin-top: 10px;
+  text-align: left;
+}
+
+.MenuItem:hover {
+  color: #deb887;
+}
+
+.Auth {
+  font-family: "Montserrat", sans-serif;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.BackButton {
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+}
+
+.BackButton:hover {
+  color: #deb887;
+}
+
+.ButtonStyle {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  width: 200px;
 }

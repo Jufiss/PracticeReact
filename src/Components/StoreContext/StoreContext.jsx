@@ -50,8 +50,8 @@ const initialProducts = [
     id: "2",
     name: "Amie Платье",
     category: "1",
-    price: 4000,
-    image: "https://a.lmcdn.ru/product/M/P/MP002XW0Q3M8_22985397_1_v1_2x.jpg",
+    price: 4300,
+    image: "https://a.lmcdn.ru/product/M/P/MP002XW00ESG_23678000_1_v1.jpeg",
     color: "Черный",
     description:
       "Размер на модели: S INT. Параметры модели: рост 172 см, грудь 83 см, талия 62 см, бедра 92 см.",

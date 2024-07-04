@@ -5,7 +5,7 @@ import { StoreProvider, StoreContext } from "../StoreContext/StoreContext.jsx"
 import "../Styles/Style.css"
 
 import { user } from "../StoreContext/StoreContext"
-import { Button } from "antd"
+import { Button, ConfigProvider } from "antd"
 
 const EditAccount = () => {
   const { orders, calculateOrderTotal, getProductById } = useContext(StoreContext)
@@ -18,7 +18,7 @@ const EditAccount = () => {
       <input className="AccountInput" type="text" value={user.surname} placeholder="Фамилия" />
       <input className="AccountInput" type="text" value={user.surname2} placeholder="Отчество" />
       <strong className="AccountLabel">город</strong>
-      <input className="AccountInput" type="text" value={user.city} placeholder="Город" />
+      <input className="AccountInput" type="text" value={user.city}/>
       <strong className="AccountLabel">контакты</strong>
       <input
         className="AccountInput"
@@ -32,7 +32,20 @@ const EditAccount = () => {
         value={user.email}
         placeholder="Электронная почта"
       />
-      <Button style={{ width: "200px", marginTop: 10 }}>Сохранить</Button>
+      <strong className="AccountLabel">пароль</strong>
+      <input className="AccountInput" type="password" placeholder="Старый пароль" />
+      <input className="AccountInput" type="password" placeholder="Новый пароль" />
+      <ConfigProvider
+        theme={{
+          token: {
+            colorPrimaryHover: "#deb887",
+          },
+        }}
+      >
+        <Button className="ButtonStyle" style={{ marginTop: 15 }}>
+          Сохранить
+        </Button>
+      </ConfigProvider>
     </div>
   )
 }

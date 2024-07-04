@@ -21,7 +21,7 @@ const Layout = ({ user, setUser }) => {
           Каталог
         </Link>
       ),
-      position: "left"
+      position: "left",
     },
     {
       key: "/cart",
@@ -39,13 +39,13 @@ const Layout = ({ user, setUser }) => {
         </Badge>
       ),
       label: <Link to="/cart"></Link>,
-      position: "right"
+      position: "right",
     },
     {
       key: "/account/orders",
       icon: <HiOutlineUserCircle />,
       label: <Link to="/account/orders"></Link>,
-      position: "right"
+      position: "right",
     },
   ]
 
@@ -60,7 +60,7 @@ const Layout = ({ user, setUser }) => {
         ))}
         <Menu.Item key="spacer" style={{ flexGrow: 0.999 }} /> {/* пространство для разделения */}
         {rightItems.map((item) => (
-          <Menu.Item key={item.key} icon={item.icon}>
+          <Menu.Item key={item.key} className="MenuItem" icon={item.icon}>
             {item.label}
           </Menu.Item>
         ))}
@@ -97,7 +97,8 @@ const Layout = ({ user, setUser }) => {
       theme={{
         components: {
           Layout: {
-            headerBg: "#C0C0C0",
+            headerBg: "linear-gradient(0deg, rgba(245,245,245,1) 0%, rgba(255,255,255,0) 100%)",
+            headerHeight: 60,
           },
           Menu: {
             darkItemBg: "#C0C0C0",
@@ -124,4 +125,3 @@ const Layout = ({ user, setUser }) => {
 }
 
 export default Layout
-

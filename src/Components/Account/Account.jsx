@@ -32,7 +32,11 @@ const Account = () => {
     },
     {
       key: "/account",
-      label: <Link className="AcoountButton">выход</Link>,
+      label: (
+        <Link to="/login" className="AcoountButton">
+          выход
+        </Link>
+      ),
     },
   ]
 

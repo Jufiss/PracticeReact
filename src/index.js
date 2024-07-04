@@ -22,6 +22,7 @@ import Account from "./Components/Account/Account"
 import OrderList from "./Components/Account/OrdersList"
 import { StoreProvider } from "./Components/StoreContext/StoreContext"
 import EditAccount from "./Components/Account/EditAccount"
+import Authorithation from "./Components/Account/Authorithation"
 
 const { Meta } = Card
 
@@ -297,7 +298,7 @@ const App = () => {
           <Route path="/products" element={<Products user={user} />} />
           <Route path="/firm" element={<Firm user={user} />} />
           <Route path="/category" element={<Category user={user} />} />
-          <Route path="/login" element={<LogIn user={user} setUser={setUser} />} />
+          <Route path="/login" element={<Authorithation />} />
           <Route path="/register" element={<Register user={user} setUser={setUser} />} />
           <Route path="/orders" element={<Orders user={user} />} />
           <Route path="/productpage" element={<ProductPage user={user} />} />
