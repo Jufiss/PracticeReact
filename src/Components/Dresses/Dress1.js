@@ -80,7 +80,7 @@ const Dress1 = ({ user }) => {
                 </div>
             </Card>
 
-            <FloatButton onClick={handleFloatButtonClick} />
+           
 
             <Comments
                 commentsUrl="http://localhost:3000/comments"
