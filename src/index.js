@@ -12,6 +12,8 @@ import Products from "./Components/Products/Products"
 import SearchPage from "./Components/SearchPage/SearchPage"
 import Dress from "./Components/Dresses/Dress"
 import Dress1 from "./Components/Dresses/Dress1"
+import Add from "./Components/Dresses/Add"
+
 import Layout from "./Components/Layout/Layout"
 import LogIn from "./Components/LogIn/LogIn"
 import Register from "./Components/Register/Register"
@@ -305,6 +307,7 @@ const App = () => {
           <Route path="/searchpage" element={<SearchPage user={user} />} />
           <Route path="/dress" element={<Dress user={user} />} />
           <Route path="/dress1" element={<Dress1 user={user} />} />
+          <Route path="/add" element={<Add user={user} />} />
 
           <Route path="/account" element={<Account />}>
             <Route path="/account/edit" element={<EditAccount />} />
